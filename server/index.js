@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const path = require("path");
-const cors = require('cors')
+const cors = require('cors');
 
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -34,11 +34,13 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 app.use('/api/users', require('./routes/users'));
-
+app.use('/api/video', require('./routes/video'));
+app.use('/api/subscribe', require('./routes/subscribe'));
+app.use('/api/comment', require('./routes/comment'));
 
 //use this to show the image you have in node js server to client (react js)
 //https://stackoverflow.com/questions/48914987/send-image-path-from-node-js-express-server-to-react-client
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static('uploads'))
 
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {

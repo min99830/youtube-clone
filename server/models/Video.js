@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const videoSchema = mongoose.Schema({
-
+const videoSchema = mongoose.Schema(
+    {
     writer: {
         type: Schema.Types.ObjectId,
         ref: 'User'
@@ -35,6 +35,6 @@ const videoSchema = mongoose.Schema({
     }
 }, { timestamps: true })
 
-const User = mongoose.model('User', userSchema);
+const Video = mongoose.model('Video', videoSchema);
 
-module.exports = { User }
+module.exports = { Video }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography, Button, Form, message, Input, Icon } from 'antd';
 import Dropzone from 'react-dropzone';
 import Axios from 'axios';
@@ -19,7 +19,7 @@ const CategoryOptions = [
     {value: 3, label: "Pets & Animals"},
 ]
 
-function VideoUploadPage(props) {
+function UploadVideoPage(props) {
     const user = useSelector(state => state.user);
     const [VideoTitle, setVideoTitle] = useState("")
     const [Description, setDescription] = useState("")
@@ -27,7 +27,7 @@ function VideoUploadPage(props) {
     const [Category, setCategory] = useState("Film & Animation")
     const [FilePath, setFilePath] = useState("")
     const [Duration, setDuration] = useState("")
-    const [ThumbnailPath, setThumbnailPath] = useState("")
+    const [Thumbnail, setThumbnail] = useState("")
 
     const onTitleChange = (e) => {
         setVideoTitle(e.currentTarget.value)
@@ -69,7 +69,7 @@ function VideoUploadPage(props) {
                         if(response.data.success) {
                             
                             setDuration(response.data.fileDuration)
-                            setThumbnailPath(response.data.url)
+                            setThumbnail(response.data.url)
 
                         } else {
                             alert('썸네일 생성에 실패 했습니다.')
@@ -84,15 +84,25 @@ function VideoUploadPage(props) {
     const onSubmit = (e) => {
         e.preventDefault();
 
+        if (user.userData && !user.userData.isAuth) {
+            return alert('Log in First')
+        }
+
+        if (VideoTitle === "" || Description === "" ||
+        Category === "" || FilePath === "" ||
+        Duration === "" || Thumbnail === "") {
+            return alert('Please first fill all the fields')
+        }
+
         const variables = {
-            writers: user.userData._id,
+            writer: user.userData._id,
             title: VideoTitle,
             description: Description,
             privacy: Private,
             filePath: FilePath,
             category: Category,
             duration: Duration,
-            thumbnail: ThumbnailPath
+            thumbnail: Thumbnail
         }
 
         Axios.post('/api/video/uploadVideo', variables)
@@ -131,9 +141,9 @@ function VideoUploadPage(props) {
                     )}
                     </Dropzone>
                     {/* Thumbnail */}
-                    {ThumbnailPath &&
+                    {Thumbnail !== "" &&
                         <div>
-                            <img src={`http://loaclhost:5000/${ThumbnailPath}`} alt="thumbnail"/>
+                            <img src={`http://localhost:5000/${Thumbnail}`} alt="thumbnail"/>
                         </div>
                     }
                 </div>
@@ -176,4 +186,4 @@ function VideoUploadPage(props) {
     )
 }
 
-export default VideoUploadPage;
+export default UploadVideoPage;
