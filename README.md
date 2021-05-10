@@ -1,18 +1,17 @@
-Hello, My Friends  
-Thank you for having interest in this repository ! 
+# YOUTUBE CLONE CODING
+### Boiler-plate를 활용해서 Youtube 구현해보기
 
-To use this application, 
+## 주요 기능
 
-1. make dev.js file inside config folder 
-2. put mongoDB info into dev.js file 
-3. Type  " npm install " inside the root directory  ( Download Server Dependencies ) 
-4. Type " npm install " inside the client directory ( Download Front-end Dependencies )
-
-
-If you have problem, feel free to ask me ^^ 
-
-You can watch the tutorial for this app.
-
-https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q?view_as=subscriber
-
-
+**회원가입 및 로그인 기능**
+(./readmeimg/signinup.png)
+(./readmeimg/login.png)
+(./readmeimg/signup.png)
+**동영상 업로드 및 썸네일 생성**
+(./readmeimg/upload.png)
+(./readmeimg/uploadpage.png)
+**동영상 및 댓글에 좋아요/싫어요 기능**
+(./readmeimg/likedislike.png)
+**사용자 구독 기능**
+(./readmeimg/recommend.png)
+(./readmeimg/subscription.png)
