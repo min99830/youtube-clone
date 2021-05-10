@@ -23,7 +23,9 @@
 **사용자 구독 기능**
 
 (Home)
+
 ![Recommend](https://user-images.githubusercontent.com/72486552/117604993-b6ca0800-b191-11eb-9a29-6a1aeb5f9761.PNG)
 
 (구독 페이지)
+
 ![subscription](https://user-images.githubusercontent.com/72486552/117604999-b7629e80-b191-11eb-80b3-e82b5559223e.PNG)
